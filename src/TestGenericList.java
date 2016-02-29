@@ -4,7 +4,7 @@
  *  the attributes stored in CSVReader object to create objects of type Country class.
  *  Then adds countries to a singly linked list.
  *
- * @author Foothill College, [YOUR NAME HERE]
+ * @author Foothill College, [Swati Gupta]
  */
 
 import java.util.Random;
@@ -49,7 +49,6 @@ public class TestGenericList
 			selectedCountries.add(allCountries[selectedIndex]);
 		}
 
-
 		// Use an iterator to go through your country list and collect country names
 		String countryNames = "";
 		java.util.Iterator<Country> iterator = selectedCountries.iterator();
@@ -84,11 +83,11 @@ public class TestGenericList
 		// NOTE: The generic linked list should be able to check whether
 		//       the list has an element that equals the generic type
 		//       passed as an argument to the contains() method.
-		Country tmpCountry = new Country(countryNameToFind);
+		Country tmpCountry = new Country(countryNameToFind);        
 		Country foundCountry = selectedCountryList.contains(tmpCountry);
 		if (foundCountry != null)
 		{
-			System.out.println("Country " + countryNameToFind + " found with details:\n" + foundCountry);
+			System.out.println("Country " + countryNameToFind + " found with details:\n" + foundCountry);       
 		}
 		else
 			System.out.println("Country " + countryNameToFind + " not found.");	
@@ -120,7 +119,7 @@ public class TestGenericList
 		// Create and set objects of type Country 
 		//
 		Country [] countries;
-		countries = new Country[NUM_COUNTRIES_TO_TEST];
+//		countries = new Country[NUM_COUNTRIES_TO_TEST];
 
 		Country current;
 		countries = new Country[countryNames.length];
@@ -159,10 +158,16 @@ public class TestGenericList
 
 		LinkedList<Country> selectedCountryList = application.createRandomListOfCountries(countries);
 
-		application.testSearchInList(selectedCountryList);
+		application.testSearchInList(selectedCountryList);		
+
+        // test case for checking the getNumSubscriptionsForPeriod() 
+//      
 
 		// flush the error stream
 		System.err.flush();
+
+//		double totalSubscriptions = countries[0].getNumSubscriptionsForPeriod(1960, 2012);  
+//        System.out.println("Total subscription of " + countries[0].getName() + " is " + totalSubscriptions);
 
 		System.out.println("\nDone with TestGenericList.");
 	}
