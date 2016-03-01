@@ -54,5 +54,5 @@ public class SubscriptionYear
 //       // someOject is of type Object, so it is casted in to SubscriptionYear before comparing it with SubscriptionYear object 
 //       return (this.subscriptions == ((SubscriptionYear)someObject).getSubscriptions() && this.year == ((SubscriptionYear)someObject).getYear());                                  
 //   }   
-   
+//   
 }

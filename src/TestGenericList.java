@@ -8,6 +8,7 @@
  */
 
 import java.util.Random;
+
 import java.util.Scanner;
 
 public class TestGenericList 
@@ -25,6 +26,30 @@ public class TestGenericList
 	{
 		// TODO: The purpose is to help you debug
 		// Note: The implementation of method is optional.
+	    
+       System.out.println("How many countries do you want to add to the list?");
+        
+        int requestedSize = Integer.parseInt( input.nextLine() );
+        
+        LinkedList<Country> selectedCountries = new LinkedList<Country>();
+        
+        for (int i = 0; i < requestedSize; i++)
+        {
+            selectedCountries.add(allCountries[i]);
+        }
+        
+        String countryNames = "";
+        java.util.Iterator<Country> iterator = selectedCountries.iterator();
+        int counter = 0;
+        while(iterator.hasNext())
+        {
+            countryNames += iterator.next().getName();
+
+//            // uses a ternary operator to prettify the output
+            countryNames += counter++ % 10 == 0 ? "\n" : ", ";
+        }
+
+        System.out.println("\nCountry Names: " + countryNames);
 	}
 
 
@@ -35,7 +60,7 @@ public class TestGenericList
 	 */
 	private LinkedList<Country> createRandomListOfCountries(Country [] allCountries)
 	{	
-		input = new Scanner(System.in);
+//		input = new Scanner(System.in);
 		System.out.println("How many countries do you want to add to the list?");
 		int requestedSize = Integer.parseInt(input.nextLine());
 
@@ -73,11 +98,11 @@ public class TestGenericList
 		System.out.println("Size of list: " + selectedCountryList.size());
 		System.out.println("List of countries: " + selectedCountryList);
 
-
 		// Check if the name of a country is in the list.
 		// If the country is found, print the details.
 		// Otherwise output not found.
 		System.out.println("\nWhat country do you want to search for?");
+		
 		String countryNameToFind = input.nextLine();
 
 		// NOTE: The generic linked list should be able to check whether
@@ -85,10 +110,10 @@ public class TestGenericList
 		//       passed as an argument to the contains() method.
 		Country tmpCountry = new Country(countryNameToFind);        
 		Country foundCountry = selectedCountryList.contains(tmpCountry);
-		if (foundCountry != null)
-		{
+		
+		if (foundCountry != null)		
 			System.out.println("Country " + countryNameToFind + " found with details:\n" + foundCountry);       
-		}
+		
 		else
 			System.out.println("Country " + countryNameToFind + " not found.");	
 	}
@@ -154,21 +179,49 @@ public class TestGenericList
 		// Note: Initially, to test your output you may hard code the number of 
 		//       countries added, and the array positions selected.
 		//		 However, make sure to comment this out before submitting your work.
-		//application.debugListOfCountries(countries);
+//		application.debugListOfCountries(countries);
+		
+		System.out.println("Part 1: " + "\n") ;
 
+		// review it
 		LinkedList<Country> selectedCountryList = application.createRandomListOfCountries(countries);
 
-		application.testSearchInList(selectedCountryList);		
+		application.testSearchInList(selectedCountryList);	
+		
+		System.out.println("Part 2: " + "\n") ;
 
-        // test case for checking the getNumSubscriptionsForPeriod() 
-//      
+		
+		// additional test case for searching country in list
+		application.testSearchInList(selectedCountryList);    
+		
+		 System.out.print("\n");
+		 System.out.println("Part 2: " + "\n") ;
+		 
+		 System.out.println("Now printing the Total subscription data of selected countries: ");
+		 
+		// test case for checking the getNumSubscriptionsForPeriod() 
+         
+         System.out.printf(countries[0].getName() + " (1960 to 2012): %.2f \n \n", 
+                 countries[0].getNumSubscriptionsForPeriod(1960, 2012));
 
-		// flush the error stream
-		System.err.flush();
+         System.out.printf(countries[155].getName() + " (1959 to 1989): %.2f \n \n", 
+                 countries[155].getNumSubscriptionsForPeriod(1959, 1989));
 
-//		double totalSubscriptions = countries[0].getNumSubscriptionsForPeriod(1960, 2012);  
-//        System.out.println("Total subscription of " + countries[0].getName() + " is " + totalSubscriptions);
+         System.out.printf(countries[10].getName() + " (1960 to 2000): %.2f \n \n", 
+                 countries[10].getNumSubscriptionsForPeriod(1960, 2000));
+
+         System.out.printf(countries[251].getName() + " (1988 to 2012): %.2f \n \n", 
+                 countries[251].getNumSubscriptionsForPeriod(1988, 2012));
+
+         System.out.printf(countries[111].getName() + " (1961 to 2014): %.2f \n \n", 
+                 countries[111].getNumSubscriptionsForPeriod(1961, 2014));
+         
+
+        // flush the error stream
+        System.err.flush();
 
 		System.out.println("\nDone with TestGenericList.");
+		
+		input.close();
 	}
 }

@@ -68,16 +68,17 @@ public class LinkedList<T> implements Iterable <T>
      */
     public T contains(T other) 
     {
-        Node<T> walker = head;
+        Node<T> walker = this.head;
 
         while (walker != null)
         {   
-            T info = walker.getData();
+//            T data = walker.getData();
             
-            if (info.equals(other))                        
-                return info; 
+            if (walker.getData().equals(other))                        
+                return walker.getData(); 
+            
+            walker = walker.getNext();
         } 
-
         return null;
     }
     
@@ -118,26 +119,27 @@ public class LinkedList<T> implements Iterable <T>
      * [data_0, data_1, data_2]
      */
     public String toString() 
-    {
-        // Uses a StringBuffer to concatenate strings
-        StringBuilder rep = new StringBuilder();
+    {      
+     // Uses a StringBuffer to concatenate strings
+      StringBuilder listData = new StringBuilder();
+    
+      listData.append("[");
+      
+      Iterator<T> iterator = this.iterator();
         
-        rep.append("[");
-        
-        Node<T> walker = head;
-
-        while(walker != null)
+        while (iterator.hasNext()) 
         {
-            rep.append(walker);
+            listData.append(iterator.next());
             
-            if(walker.getNext() != null)
-                rep.append(",");
-            
-            walker = walker.getNext(); 
+            if (iterator.hasNext() != false)
+            {
+                listData.append(","); 
+            }
         }
-        rep.append("]");
         
-        return rep.toString();        
+        listData.append("]");
+        
+        return listData.toString();      
     }
     
     /**
