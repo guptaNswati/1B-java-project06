@@ -1,0 +1,13 @@
+FEEDBACK:
+
+Well done in converting your implementation to a generic data structure!
+
+
+Good use of an iterator to traverse the list.
+
+
+Well done in going above and beyond the requirements by testing the new implementation 
+    of your getNumSubscriptionsForPeriod() in class Country.
+    
+-Bita.
+
